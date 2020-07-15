@@ -29,6 +29,8 @@ export default function Photos(props) {
   //  */}
   return (
     <h1>here</h1>
+      <div className='here'>
+      </div>
   );
   
 };
