@@ -2,33 +2,41 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios";
 
 export default function Photos(props) {
-  const { date } = props;
-  const [photo, setPhoto] = useState();
+  const [dates, setDates] = useState("2020-07-14");
+  const [datePhoto, setDatePhoto] = useState([]);
 
-  // change date --> collect/set new data
-  useEffect(() => {
-    axios.get(`https:api.nasa.gov/planetary/apod?api_key=DEMO_KEY&${date}`)
+  useEffect( () => {
+    debugger;
+    const url = `https:api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=${dates}`;
+    axios.get(url)
       .then(res => {
         debugger;
-        console.log('Photo: collecting data worked!!!');
-        setPhoto(res.data);
+        console.log('collecting photo data worked!');
+        setDatePhoto(res.data);
       })
       .catch(err => {
         debugger;
-        console.log('Photo: collecting data failed...');
+        console.log('collecting data failed....');
       });
-  }, [date]);
-
-  const X = (props) => {
-    return <img src={props.info.url}/>;
+  }, []); // TODO(?): Include "changed variable" to determine WHEN to do the effect.
+  
+  const Photo = (props) => {
+    debugger;
+    if (!props.date) {
+      return <h3>Loading....</h3>
+    }
+    return (
+      <div className='photo'>
+        <img src={props.date.url}/>
+      </div>
+    );
   };
+  
 
-
-  // {/*
-  //    <Photo key={date} info={photo}/>
-  //  */}
   return (
-    <h1>here</h1>
+    <div className="main">
+      <Photo key={datePhoto.date} date={datePhoto}/>
+    </div>
   );
   
 };

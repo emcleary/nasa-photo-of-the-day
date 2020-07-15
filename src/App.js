@@ -38,32 +38,32 @@ function App() {
   };
 
 
-  useEffect( () => {
-    debugger;
-    const url = `https:api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=${dates}`;
-    axios.get(url)
-      .then(res => {
-        debugger;
-        console.log('collecting photo data worked!');
-        setDatePhoto(res.data);
-      })
-      .catch(err => {
-        debugger;
-        console.log('collecting data failed....');
-      });
-  }, []); // TODO(?): Include "changed variable" to determine WHEN to do the effect.
+  // useEffect( () => {
+  //   debugger;
+  //   const url = `https:api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=${dates}`;
+  //   axios.get(url)
+  //     .then(res => {
+  //       debugger;
+  //       console.log('collecting photo data worked!');
+  //       setDatePhoto(res.data);
+  //     })
+  //     .catch(err => {
+  //       debugger;
+  //       console.log('collecting data failed....');
+  //     });
+  // }, []); // TODO(?): Include "changed variable" to determine WHEN to do the effect.
   
-  const Photo = (props) => {
-    debugger;
-    if (!props.date) {
-      return <h3>Loading....</h3>
-    }
-    return (
-      <div className='photo'>
-        <img src={props.date.url}/>
-      </div>
-    );
-  };
+  // const Photo = (props) => {
+  //   debugger;
+  //   if (!props.date) {
+  //     return <h3>Loading....</h3>
+  //   }
+  //   return (
+  //     <div className='photo'>
+  //       <img src={props.date.url}/>
+  //     </div>
+  //   );
+  // };
   
   return (
     <div className="App">
@@ -77,7 +77,7 @@ function App() {
         <PhotoToday key={photos.date} info={photos}/>
       </div>
       <div className="main">
-        <Photo key={datePhoto.date} date={datePhoto}/>
+        <Photos key={datePhoto.date} date={datePhoto}/>
       </div>
     </div>
   );
