@@ -6,38 +6,43 @@ const API_KEY = 'tbr3gyKUjFmIR3PwpzNcmTc0n7rvhsjOspoVWArz';
 
 export default function Photos(props) {
   const { date } = props;
-  
+
+  const [thisDate, setThisDate] = useState(date);
   const [datePhoto, setDatePhoto] = useState([]);
 
   useEffect( () => {
-    debugger;
-    const url = `https:api.nasa.gov/planetary/apod?api_key=${API_KEY}&date=${date}`;
+    const url = `https:api.nasa.gov/planetary/apod?api_key=${API_KEY}&date=${thisDate}`;
     axios.get(url)
       .then(res => {
-        debugger;
         console.log('collecting photo data worked!');
         setDatePhoto(res.data);
       })
       .catch(err => {
-        debugger;
         console.log('Photos: collecting data failed....');
       });
-  }, []); // TODO(?): Include "changed variable" to determine WHEN to do the effect.
-  
+  }, [thisDate]);
+
+  function getNewDate(e) {
+    debugger;
+    e.preventDefault();
+    const year = 1990 + Math.floor(Math.random()*30);
+    const dateSplit = datePhoto.date.split('-');
+    dateSplit[0] = year;
+    const date = dateSplit.join('-');
+    setThisDate(date);
+  };
+
   const Photo = (props) => {
     if (!props.date) {
       return <h3>Loading....</h3>;
     }
-    console.log(props.date.url);
-    debugger;
     return (
-      <div className='photo'>
-        <img src={props.date.url} height="300px"/>
+      <div className='photo' onClick={getNewDate}>
+        <img src={props.date.url} height="300px" />
         <p>{props.date.title}</p>
       </div>
     );
   };
-  
 
   return (
     <div className="main">
