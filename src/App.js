@@ -19,7 +19,7 @@ font-size: 40px;
 const StyledMain = styled.div`
 display: flex;
 flex-direction: column;
-// border: 1px solid red;
+border-top: 10px solid black;
 `;
 
 const StyledMainBoxes = styled.div`
@@ -29,12 +29,18 @@ justify-content: space-around;
 flex-wrap: wrap;
 align-items: center;
 align-content: space-around;
+border-top: 10px solid black;
+border-bottom: 10px solid black;
 div {
 // border 1px solid blue;
 height: 400px;
 display: flex;
 flex-direction: column;
 justify-content: space-around;
+
+&:hover {
+background-color: blue;
+}
 }
 `;
 
@@ -75,26 +81,15 @@ function App() {
   return (
     <div className="App">
       <StyledParagraph>
-        Read through the instructions in the README.md file to build your NASA
-        app! Have fun <span role="img" aria-label='go!'>🚀</span>!
+        NASA's Astronomy Picture of the Day!
       </StyledParagraph>
-      {/*
-      <div className="header-container">
-        <PhotoToday key={photos.date} info={photos}/>
-      </div>
-      <div className="main">
-      {
-	dates.map( date => 
-		   <Photos key={date} date={date}/>
-		 )
-      }
-      </div>
-       */}
-
       <div className="header-container">
         <PhotoToday key={photos.date} info={photos}/>
       </div>
       <StyledMain>
+        <StyledParagraph>
+          Previous APODs
+        </StyledParagraph>
         <StyledMainBoxes>
           {
             dates.map( date => 
