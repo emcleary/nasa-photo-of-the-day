@@ -32,6 +32,7 @@ function App() {
     if (!props.info) {
       return <h3>Loading....</h3>
     }
+    console.log(props.info.url);
     return (
       <div className='photo'>
         <img src={props.info.url}/>

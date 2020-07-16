@@ -27,6 +27,7 @@ export default function Photos(props) {
     if (!props.date) {
       return <h3>Loading....</h3>
     }
+    console.log(props.date.url);
     return (
       <div className='photo'>
         <img src={props.date.url}/>
