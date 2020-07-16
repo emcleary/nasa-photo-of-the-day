@@ -33,7 +33,7 @@ border-top: 10px solid black;
 border-bottom: 10px solid black;
 div {
 // border 1px solid blue;
-height: 400px;
+height: 450px;
 display: flex;
 flex-direction: column;
 justify-content: space-around;

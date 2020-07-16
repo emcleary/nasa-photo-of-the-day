@@ -22,12 +22,25 @@ export default function Photos(props) {
       });
   }, [thisDate]);
 
+  function addZero(num) {
+    if (num < 10) {
+      num = '0'+num.toString();
+    }
+    return num
+  }
+  
   function getNewDate(e) {
     debugger;
     e.preventDefault();
-    const year = 1990 + Math.floor(Math.random()*30);
     const dateSplit = datePhoto.date.split('-');
+    const year = 1990 + Math.floor(Math.random()*29); // 1990 - 2019
     dateSplit[0] = year;
+    let month = Math.ceil(Math.random()*12); // 1 - 12
+    month = addZero(month);
+    dateSplit[1] = month;
+    let day = Math.ceil(Math.random()*28); // 1 - 28
+    day = addZero(day);
+    dateSplit[2] = day;
     const date = dateSplit.join('-');
     setThisDate(date);
   };
@@ -40,6 +53,7 @@ export default function Photos(props) {
       <div className='photo' onClick={getNewDate}>
         <img src={props.date.url} height="300px" />
         <p>{props.date.title}</p>
+        <p>{props.date.date}</p>
       </div>
     );
   };
