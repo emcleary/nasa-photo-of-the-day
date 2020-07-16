@@ -7,6 +7,8 @@ import axios from "axios";
 // TODO: Add imports from closures.
 import Photos from "./components/Photos/Photos.js";
 
+const API_KEY = 'tbr3gyKUjFmIR3PwpzNcmTc0n7rvhsjOspoVWArz';
+
 function App() {
   
   // state stuff
@@ -16,7 +18,7 @@ function App() {
   
   // effects -- handle API call side effect
   useEffect( () => {
-    axios.get('https:api.nasa.gov/planetary/apod?api_key=DEMO_KEY')
+    axios.get(`https:api.nasa.gov/planetary/apod?api_key=${API_KEY}`)
       .then(res => {
         // debugger;
         console.log('collecting data worked!');

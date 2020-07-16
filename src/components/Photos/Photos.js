@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 
+
+const API_KEY = 'tbr3gyKUjFmIR3PwpzNcmTc0n7rvhsjOspoVWArz';
+
 export default function Photos(props) {
   const { date } = props;
   
@@ -9,7 +12,7 @@ export default function Photos(props) {
 
   useEffect( () => {
     debugger;
-    const url = `https:api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=${date}`;
+    const url = `https:api.nasa.gov/planetary/apod?api_key=${API_KEY}&date=${date}`;
     axios.get(url)
       .then(res => {
         debugger;
