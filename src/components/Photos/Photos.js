@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios";
 
 export default function Photos(props) {
-  const [dates, setDates] = useState("2020-07-14");
+  const { date } = props;
+  
+  // const [dates, setDates] = useState("2020-07-14");
   const [datePhoto, setDatePhoto] = useState([]);
 
   useEffect( () => {
     debugger;
-    const url = `https:api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=${dates}`;
+    const url = `https:api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=${date}`;
     axios.get(url)
       .then(res => {
         debugger;
@@ -16,7 +18,7 @@ export default function Photos(props) {
       })
       .catch(err => {
         debugger;
-        console.log('collecting data failed....');
+        console.log('Photos: collecting data failed....');
       });
   }, []); // TODO(?): Include "changed variable" to determine WHEN to do the effect.
   
@@ -35,7 +37,7 @@ export default function Photos(props) {
 
   return (
     <div className="main">
-      <Photo key={datePhoto.date} date={datePhoto}/>
+      <Photo key={date} date={datePhoto}/>
     </div>
   );
   
