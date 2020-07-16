@@ -50,7 +50,6 @@ function App() {
   // state stuff
   const [photos, setPhotos] = useState([]);
   const [dates, setDates] = useState(["2020-07-14", "2020-06-13", "2020-05-12"]);
-  // const [dates, setDates] = useState(["2020-07-14"]);
   
   // effects -- handle API call side effect
   useEffect( () => {
@@ -64,7 +63,7 @@ function App() {
         // debugger;
         console.log('PhotoToday: collecting data failed....');
       });
-  }, []); // TODO(?): Include "changed variable" to determine WHEN to do the effect.
+  }, []);
 
   const PhotoToday = (props) => {
     if (!props.info) {

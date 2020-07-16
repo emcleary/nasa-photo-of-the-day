@@ -7,7 +7,6 @@ const API_KEY = 'tbr3gyKUjFmIR3PwpzNcmTc0n7rvhsjOspoVWArz';
 export default function Photos(props) {
   const { date } = props;
   
-  // const [dates, setDates] = useState("2020-07-14");
   const [datePhoto, setDatePhoto] = useState([]);
 
   useEffect( () => {
@@ -26,14 +25,15 @@ export default function Photos(props) {
   }, []); // TODO(?): Include "changed variable" to determine WHEN to do the effect.
   
   const Photo = (props) => {
-    debugger;
     if (!props.date) {
-      return <h3>Loading....</h3>
+      return <h3>Loading....</h3>;
     }
     console.log(props.date.url);
+    debugger;
     return (
       <div className='photo'>
         <img src={props.date.url} height="300px"/>
+        <p>{props.date.title}</p>
       </div>
     );
   };
