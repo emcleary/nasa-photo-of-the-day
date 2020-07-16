@@ -1,5 +1,6 @@
 import React, {useState, useEffect } from "react";
 import "./App.css";
+import styled from 'styled-components';
 
 // Import other libraries
 import axios from "axios";
@@ -8,6 +9,35 @@ import axios from "axios";
 import Photos from "./components/Photos/Photos.js";
 
 const API_KEY = 'tbr3gyKUjFmIR3PwpzNcmTc0n7rvhsjOspoVWArz';
+
+// STYLING
+const StyledParagraph = styled.p`
+font-size: 40px;
+`;
+
+// Contain photos on a flex-box
+const StyledMain = styled.div`
+display: flex;
+flex-direction: column;
+// border: 1px solid red;
+`;
+
+const StyledMainBoxes = styled.div`
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+flex-wrap: wrap;
+align-items: center;
+align-content: space-around;
+div {
+// border 1px solid blue;
+height: 400px;
+display: flex;
+flex-direction: column;
+justify-content: space-around;
+}
+`;
+
 
 function App() {
   
@@ -44,10 +74,11 @@ function App() {
 
   return (
     <div className="App">
-      <p>
+      <StyledParagraph>
         Read through the instructions in the README.md file to build your NASA
         app! Have fun <span role="img" aria-label='go!'>🚀</span>!
-      </p>
+      </StyledParagraph>
+      {/*
       <div className="header-container">
         <PhotoToday key={photos.date} info={photos}/>
       </div>
@@ -58,6 +89,21 @@ function App() {
 		 )
       }
       </div>
+       */}
+
+      <div className="header-container">
+        <PhotoToday key={photos.date} info={photos}/>
+      </div>
+      <StyledMain>
+        <StyledMainBoxes>
+          {
+            dates.map( date => 
+		       <Photos key={date} date={date}/>
+                     )
+          }
+        </StyledMainBoxes>
+      </StyledMain>
+      
     </div>
   );
 }

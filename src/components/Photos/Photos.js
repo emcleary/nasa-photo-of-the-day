@@ -33,7 +33,7 @@ export default function Photos(props) {
     console.log(props.date.url);
     return (
       <div className='photo'>
-        <img src={props.date.url}/>
+        <img src={props.date.url} height="300px"/>
       </div>
     );
   };
